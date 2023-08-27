@@ -3,11 +3,24 @@ from nltk import word_tokenize, download
 import torch
 import pandas as pd
 from random import sample
+import contractions
 
 download('punkt')
 
 
+def clean_quote(quote):
+    quote = contractions.fix(quote)
+    quote = quote.replace('""', "'")
+    quote = quote.replace('"', "'")
+    quote = quote.replace("“", "'").replace("”", "'")
+    quote = quote.replace("``", "'").replace("''", "'")
+    
+    quote = quote.replace('"', " ")
+    quote = quote.replace("&", "and")
+    return quote
+
 def tokenize(quote, word_embedder, device):
+    quote = clean_quote(quote)
     tokens = word_tokenize(quote.lower())
     tokens = torch.stack([word_embedder[word] for word in tokens if word in word_embedder.stoi]).to(device)
     return tokens
