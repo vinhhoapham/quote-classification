@@ -1,5 +1,4 @@
 from torch.utils.data import Dataset
-from torchtext.vocab import GloVe
 from nltk import word_tokenize, download
 import torch
 import pandas as pd
