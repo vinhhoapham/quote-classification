@@ -19,6 +19,3 @@ To run and interact with the project, the following technologies and libraries a
 - PyTorch
 - Scrapy
 
----
-
-For detailed installation and setup instructions, refer to the Installation section. If you encounter any issues or have suggestions, please feel free to contact the author or contribute to the project.
